@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Boot</title>
+        <iframe src="settings.html" id="settings_frame"></iframe>
+    </head>
+    <body>
+        <script>
+            settings_frame=document.getElementById('settings_frame');
+            settings_window=settings_frame.contentDocument.getWin();
+            systems=settings_window.parse();
+            for(var i=0;i<systems.length;i++){
+                document.write('<a href="'+systems[i][0]+'">'+systems[i][1]+'</a></br>');
+            }
+            //To Add an os
+            function addOS(path,name){
+                settings_window.addOS(path,name);
+                window.reload();
+            }
+        </script>
+    </body>
+</html>

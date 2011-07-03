@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Settings</title>
+    </head>
+    <body>
+        <form action='settings.html' method='post'>
+            <input id="setts"/>
+        </form>
+        <script>
+            var form=document.getElementsByTagName('form')[0],
+                input=document.getElementById('setts');
+            function parse(){
+                var vals=input.value.split(' '),
+                    i=0;
+                for( ; i<vals.length ; i++){
+                    vals[i]=vals[i].split('&');
+                    vals[i][0]=decodeURI(vals[i][0]);
+                    vals[i][1]=decodeURI(vals[i][1]);
+                }
+                return vals
+            }
+            function addOS(path,name){
+                path=encodeURI(path);
+                name=encodeURI(name);
+                
+                input.value+=' '+path+'&'+name;
+                form.submit()
+            }
+            document.getWin=function(){return window;}
+        </script>
+    </body>
+</html>
